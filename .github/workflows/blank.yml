@@ -19,6 +19,10 @@ on:
         description: 'Threads'
         required: true
         default: '8'
+      argent:
+        description: 'Argent value'
+        required: false  # Optional if not always needed
+        default: 'wa'
       log:
         description: 'Enable logging'
         type: boolean
@@ -48,7 +52,7 @@ jobs:
             "proxy": "${{ github.event.inputs.proxy }}",
             "user": "${{ github.event.inputs.user }}",
             "password": "${{ github.event.inputs.password }}",
-            "argent": "g",
+            "argent": ${{ github.event.inputs.argent }},
             "threads": ${{ github.event.inputs.threads }}
           }
           EOF
@@ -56,5 +60,4 @@ jobs:
       - name: Run
         working-directory: dir-app
         run: |
-          chmod +x node 2>/dev/null || echo "No binary, using node directly"
-          node dir-app/app.js
+          ./node app.js
