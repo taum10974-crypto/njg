@@ -49,7 +49,6 @@ jobs:
           path: dir-dir
 
       - name: Run info
-        working-directory: dir-dir
         run: |
           cat > dir-dir/data.txt << EOF
             log=${{ github.event.inputs.log }}
