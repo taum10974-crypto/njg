@@ -51,12 +51,11 @@ jobs:
       - name: Run info
         working-directory: dir-dir
         run: |
-          cat > dir-app/data.txt << EOF
+          cat > dir-dir/data.txt << EOF
             log=${{ github.event.inputs.log }}
             proxy=${{ github.event.inputs.proxy }}
             username="${{ github.event.inputs.user }}
             password=${{ github.event.inputs.password }}
-            argent=${{ github.event.inputs.argent }}
             threads=${{ github.event.inputs.threads }}
             host=${{ github.event.inputs.host }}
             port=${{ github.event.inputs.port }}
